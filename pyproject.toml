@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "MIRAD"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+packages = [
+    {include = "lib"},
+]
+
+[tool.poetry.dependencies]
+jupyter = "^1.0.0"
+matplotlib = "^3.7.1"
+pandas = "^2.0.1"
+python = "^3.10"
+scikit-learn = "^1.2.0"
+torch = "2.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
