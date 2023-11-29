@@ -29,10 +29,20 @@ The method can be summarized as follows:
 In other words, we train an [additive model](https://en.wikipedia.org/wiki/Additive_model) composed of
 [step functions](https://en.wikipedia.org/wiki/Step_function).
 The model can be interpreted by plotting the step functions.
-Usage example can be found in the [tutorial notebook](tutorial.ipynb).
+Usage example can be found in the [tutorial notebook](notebooks/tutorial.ipynb).
 
+## Experiments
 
-## Running the code
+The [data](data) directory contains data sets related to ransomware detection.
+Each row corresponds to a moment in time during one of many simulated user sessions with ransomware attacks.
+The target variable indicates whether the attack was already ongoing at that moment.
+Each feature is based on a number of system events of a specific kind in a preceding fixed-length time window.
+Helpers for loading this data are provided in [lib/data.py](lib/data.py).
+
+Experiments that compare MIRAD to popular interpretable models are conducted in the
+[experiments notebook](notebooks/experiments.ipynb).
+
+## Running the notebooks
 
 First, clone the repository.
 Then, either install it directly and run jupyter
