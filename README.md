@@ -9,11 +9,11 @@ Key features:
 - efficiency: training can be executed on a CPU, evaluation is fast
 - extensibility: model structure allows easy enforcement of task-specific requirements by additional regularization
 
-We also include everything necessary to reproduce experiments we conducted to publish our results.
+We also include everything necessary to reproduce the experiments we conducted to publish our results.
 
 ## How it works
 
-All the implementation is in [lib/embedding_sum.py](lib/embedding_sum.py) and consists of three classes:
+The entire implementation can be found in [lib/embedding_sum.py](lib/embedding_sum.py) and consists of three classes:
  - Digitizer
  - EmbeddingSumModule
  - EmbeddingSumClassifier
@@ -21,8 +21,8 @@ All the implementation is in [lib/embedding_sum.py](lib/embedding_sum.py) and co
 The method can be summarized as follows:
 
 1. For each feature, the `Digitizer` defines quantile-based bins and encodes feature values as bin ordinals,
-2. The `EmbeddingSumModule` defines a parameter for each bin of each feature and implements evaluation as sum of the
-   parameters corresponding to bin ordinals in the input vector,
+2. The `EmbeddingSumModule` defines a trainable parameter for each bin of each feature
+   and implements evaluation as sum of the trainable parameters corresponding to bin ordinals in the input vector,
 3. The `EmbeddingSumClassifier` trains the `EmbeddingSumModule` using gradient descent and a compound loss function
    combining binary cross-entropy with regularization terms that encourage desirable properties of the model.
 
