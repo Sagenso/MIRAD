@@ -101,6 +101,16 @@ class EmbeddingSumModule(nn.Module):
             for w, emb in zip(self.values_weights, self.embeddings)
         ]).pow(2).mean()
 
+    @torch.no_grad()
+    def feature_importance(self, i: int | None = None):
+        if i is None:
+            return torch.tensor([self.feature_importance(i) for i in range(len(self.embeddings))])
+        else:
+            w = self.values_weights[i] / self.values_weights[i].sum()
+            emb = self.embeddings[i].weight.view(w.shape)
+            mean = (w @ emb).sum()
+            return (w @ (emb - mean).abs()).sum()
+
 
 class EmbeddingSumClassifier:
     """ Scikit-learn-compatible classifier """
@@ -225,3 +235,13 @@ class EmbeddingSumClassifier:
             ax2.scatter(x=xs[1:-1], y=cutoffs, color='royalblue')
             ax2.tick_params(axis='y', labelcolor='royalblue')
             ax2.set_ylabel('cutoff', color='royalblue')
+
+    def feature_importance(self, feature_names: list[str] | None = None) -> pd.Series:
+        if feature_names is None:
+            feature_names = list(map('feature {}'.format, range(len(self.module_.embeddings))))
+        assert len(feature_names) == len(self.module_.embeddings)
+        return pd.Series(
+            self.module_.feature_importance().numpy(),
+            index=feature_names,
+            name='importance'
+        )
