@@ -73,6 +73,4 @@ If you use this codebase, or otherwise find our work valuable, please cite:
   number={},
   pages={133810-133820},
   doi={10.1109/ACCESS.2024.3461322}}
-
-
 ```
