@@ -1,5 +1,7 @@
 # MIRAD: A Method for Interpretable Ransomware Attack Detection
 
+Paper: https://doi.org/10.1109/access.2024.3461322
+
 In this repository we open-source a method for training interpretable models,
 originally developed for ransomware attack detection.
 
@@ -56,4 +58,19 @@ or build and run a docker image
 ```shell
  docker build -t mirad .
  docker run --rm -it -p 8888:8888 mirad
+```
+
+## Citation
+
+If you use this codebase, or otherwise find our work valuable, please cite:
+```
+@article{MIRAD,
+  author={Marcinkowski, Bartosz and Goschorska, Maja and Wileńska, Natalia and Siuta, Jakub and Kajdanowicz, Tomasz},
+  journal={IEEE Access},
+  title={MIRAD: A Method for Interpretable Ransomware Attack Detection},
+  year={2024},
+  volume={12},
+  number={},
+  pages={133810-133820},
+  doi={10.1109/ACCESS.2024.3461322}}
 ```
